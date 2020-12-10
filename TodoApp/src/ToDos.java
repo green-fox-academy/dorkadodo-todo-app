@@ -1,12 +1,13 @@
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ToDos {
+public class ToDos implements Serializable {
     private boolean status;
     private String priority;
     private final String description;
     private final String timeAdded;
 
-    LocalDateTime dateTime;
+    private LocalDateTime dateTime;
 
     public ToDos (String description){
         dateTime = LocalDateTime.now();
@@ -38,5 +39,10 @@ public class ToDos {
 
     public String getTimeAdded() {
         return timeAdded;
+    }
+
+    @Override
+    public String toString() {
+        return (status ? "[x] " : "[ ] ") + description + "%  " + timeAdded + "%  " + priority;
     }
 }
